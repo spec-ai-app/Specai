@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spec AI - Twój osobisty mechanik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #050505; color: #f0f0f0; }
+        .nav-link:hover { color: #ef4444; transition: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-bold text-2xl tracking-tighter text-red-600">SPEC AI</div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
+                <a href="#home" class="nav-link">Start</a>
+                <a href="#about" class="nav-link">O nas</a>
+                <a href="#demo" class="nav-link">Demo</a>
+                <a href="#progress" class="nav-link">Postęp</a>
+                <a href="#contact" class="nav-link text-red-500">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-6">
+        <h1 class="text-6xl md:text-8xl font-black mb-4">SPEC AI</h1>
+        <p class="text-gray-500 text-lg md:text-xl max-w-xl italic">[ Tutaj dodamy Twój krótki opis ]</p>
+        <div class="mt-10 animate-bounce">
+            <a href="#about" class="text-zinc-700">↓ przewiń niżej</a>
+        </div>
+    </section>
+
+    <section id="about" class="min-h-screen py-32 px-6 max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8 border-l-4 border-red-600 pl-4">O projekcie</h2>
+        <p class="text-zinc-400 leading-relaxed text-lg">
+            Spec AI powstaje dla ludzi, których nie stać na mechanika. Budujemy most między skomplikowaną technologią a zwykłym użytkownikiem w potrzebie.
+        </p>
+    </section>
+
+    <section id="demo" class="min-h-screen py-32 bg-zinc-900/50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-zinc-500 uppercase tracking-widest">Video Demo</h2>
+            <div class="aspect-video bg-black border border-white/10 flex items-center justify-center rounded-2xl">
+                <span class="text-zinc-700 italic">[ Tu wstawimy Twoje demo ]</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="progress" class="min-h-screen py-32 px-6 max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12">Status prac</h2>
+        <div class="space-y-12">
+            <div>
+                <div class="flex justify-between mb-2"><span>MVP (Proto)</span><span class="text-red-500">85%</span></div>
+                <div class="w-full bg-zinc-800 h-1 rounded-full"><div class="bg-red-600 h-1 rounded-full" style="width: 85%"></div></div>
+            </div>
+            <div>
+                <div class="flex justify-between mb-2"><span>Wersja Alpha</span><span class="text-zinc-600">40%</span></div>
+                <div class="w-full bg-zinc-800 h-1 rounded-full"><div class="bg-zinc-600 h-1 rounded-full" style="width: 40%"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-20 border-t border-white/5 text-center">
+        <p class="text-zinc-600 text-sm mb-4 tracking-widest">KONTAKT & WSPÓŁPRACA</p>
+        <a href="mailto:twoj@email.com" class="text-2xl hover:text-red-500 transition">twoj@email.com</a>
+        <p class="mt-12 text-xs text-zinc-800 uppercase tracking-widest">Built on iOS with ❤️ for Spec AI</p>
+    </footer>
+
+</body>
+</html>

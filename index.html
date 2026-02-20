@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spec AI | Inteligentne Wsparcie Mechaników</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar" id="navbar">
+        <div class="container flex-header">
+            <div class="logo">
+                <span class="logo-text">SPEC<span class="accent">AI</span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#about">O nas</a>
+                <a href="#how-it-works">Jak to działa</a>
+                <a href="#partnership">Partnerstwo</a>
+                <a href="#support" class="btn-nav">Wsparcie</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <span class="badge">Next-Gen Automotive AI</span>
+                <h1>AI dla mechaników. <br><span class="gradient-text">Inteligentne wsparcie</span> w czasie rzeczywistym.</h1>
+                <p>Prowadzi Cię przez naprawę krok po kroku. Rozwiązuje problemy w trakcie pracy. Bez zbędnych rozmów. Tylko konkret.</p>
+                <div class="hero-btns">
+                    <a href="#demo" class="btn btn-primary">Zobacz demo</a>
+                    <a href="#partnership" class="btn btn-secondary">Zostań partnerem</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Skupieni na zadaniu</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card fade-in">
+                    <h3>Praca w procesie</h3>
+                    <p>Aplikacja działa w trakcie naprawy, dostosowując się do aktualnego etapu Twoich działań.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>Brak szumu</h3>
+                    <p>Nie wymaga dokładnego opisu sytuacji. System rozumie kontekst i podaje rozwiązanie.</p>
+                </div>
+                <div class="card fade-in">
+                    <h3>Efektywność</h3>
+                    <p>Rozwiązuje problem i natychmiast wraca do głównego procesu naprawy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section bg-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Jak to działa</h2>
+            </div>
+    <section id="demo" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Galeria</h2>
+            </div>
+            <div class="demo-wrapper fade-in">
+                <div class="phone-frame">
+                    <div class="gallery-container" id="gallery">
+
+<img src="pic/IMG_1196.jpeg" alt="Demo 1" class="gallery-img active">
+<img src="pic/IMG_1197.jpeg" alt="Demo 2" class="gallery-img">
+
+                    </div>
+                </div>
+                <div class="gallery-controls">
+                    <button id="prevBtn" class="btn-arrow">←</button>
+                    <span id="gallery-counter">1 / 2</span>
+                    <button id="nextBtn" class="btn-arrow">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <div class="steps-container">
+                <div class="step fade-in">
+                    <div class="step-num">01</div>
+                    <h4>Wybierz naprawę</h4>
+                    <p>Wskaż model i podzespół, nad którym pracujesz.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-num">02</div>
+                    <h4>Otrzymuj instrukcje</h4>
+                    <p>Dostajesz precyzyjne kroki techniczne w czasie rzeczywistym.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-num">03</div>
+                    <h4>Zgłoś problem</h4>
+                    <p>Napotkałeś opór? Zapytaj AI o konkretną przeszkodę.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-num">04</div>
+                    <h4>Wróć do planu</h4>
+                    <p>System rozwiązuje problem i automatycznie wznawia proces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+<div class="form-container fade-in">
+    <form action="contact.php" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Nazwa warsztatu / Imię" required>
+        <input type="email" name="email" placeholder="Twój Email" required>
+        <textarea name="message" placeholder="Jak możemy pomóc?" required></textarea>
+        <button type="submit" class="btn btn-primary full-width">Wyślij zgłoszenie</button>
+    </form>
+</div>
+
+    </section>
+
+    <section id="partnership" class="section bg-blue shadow-inner">
+        <div class="container grid-2">
+            <div class="fade-in">
+                <h2 class="text-white">Partnerstwo</h2>
+                <p class="text-white-op">Celujemy we współprace z Polskimi przedsiebiorcami. Użyj formularza aby otrzymać warunki współpracy</p>
+            </div>
+            <div class="form-container fade-in">
+                <form action="#" method="POST" class="contact-form">
+                    <input type="text" name="name" placeholder="Nazwa warsztatu / Imię" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" placeholder="Twoje zapytanie"></textarea>
+                    <button type="submit" class="btn btn-primary full-width">Wyślij zgłoszenie</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="section">
+        <div class="container text-center fade-in">
+            <h2>Wsparcie techniczne</h2>
+            <p>Masz pytania dotyczące działania systemu? Jesteśmy do dyspozycji.</p>
+            <p class="email-link">as.dudek97@gmail.com</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container flex-footer">
+            <div class="footer-logo">SPEC<span class="accent">AI</span></div>
+            <div class="footer-links">
+                <a href="#about">O nas</a>
+                <a href="#partnership">Partnerstwo</a>
+                <a href="#support">Pomoc</a>
+            </div>
+            <div class="copy">© 2026 Spec AI. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

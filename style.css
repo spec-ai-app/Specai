@@ -1,0 +1,123 @@
+/* --- FUNDAMENTY I KOLORY --- */
+:root {
+    --primary-blue: #1e3a8a;
+    --secondary-blue: #3b82f6;
+    --dark-navy: #081431;
+    --soft-white: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    background-color: var(--soft-white);
+    color: var(--dark-navy);
+    margin: 0;
+    padding: 0;
+}
+
+/* --- NAWIGACJA (GLASS EFFECT) --- */
+.glass-effect {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* --- STYLIZACJA LOGO SVG --- */
+#main-logo svg {
+    height: 40px; /* Wysokość w headerze */
+    width: auto;
+    fill: var(--primary-blue); /* Automatyczny kolor logo */
+    transition: transform 0.3s ease;
+}
+
+#main-logo:hover svg {
+    transform: scale(1.05);
+}
+
+/* --- SEKCJA HERO --- */
+.hero {
+    background: radial-gradient(circle at top right, #dbeafe, transparent),
+                radial-gradient(circle at bottom left, #eff6ff, transparent);
+}
+
+/* --- PRZYCISKI --- */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 9999px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(30, 58, 138, 0.3);
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 12px 32px;
+    border-radius: 9999px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* --- SEKCJA KORZYŚCI --- */
+.benefit-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    background-color: white;
+}
+
+.icon-container svg {
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover .icon-container svg {
+    transform: rotate(10deg) scale(1.1);
+}
+
+/* --- ANIMACJE --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.arrow-down {
+    animation: bounceSlow 2s infinite;
+}
+
+/* --- OPTYMALIZACJA MOBILE --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3.5rem; /* Dopasowanie do iPhone 15 */
+    }
+    
+    #main-logo svg {
+        height: 32px; /* Nieco mniejsze logo na mobile */
+    }
+}

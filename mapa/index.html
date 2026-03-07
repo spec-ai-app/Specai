@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spec AI — Mapa Aplikacji</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Barlow+Condensed:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --card-bg: rgba(24, 24, 27, 0.9);
+            --border-dim: rgba(255, 255, 255, 0.1);
+            --text-dim: #a1a1aa;
+        }
+
+        body {
+            background: linear-gradient(160deg, #09090b 0%, #0f0f12 50%, #09090b 100%);
+            color: #fff;
+            font-family: 'Barlow', sans-serif;
+            margin: 0;
+            padding: 24px 16px;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header { text-align: center; margin-bottom: 40px; }
+        .logo {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 36px;
+            letter-spacing: 6px;
+            font-weight: 900;
+        }
+        .subtitle { font-size: 11px; color: #52525b; letter-spacing: 5px; margin-top: 5px; text-transform: uppercase; }
+
+        /* TIMELINE */
+        .timeline { max-width: 700px; margin: 0 auto; position: relative; }
+        .timeline-line {
+            position: absolute;
+            left: 50%; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(180deg, #ef444444, #3b82f644, #10b98144, #37415144);
+            transform: translateX(-50%);
+        }
+
+        /* STEP CARD */
+        .step-container {
+            display: flex;
+            margin-bottom: 15px;
+            position: relative;
+            width: 100%;
+        }
+        .step-container.left { justify-content: flex-start; }
+        .step-container.right { justify-content: flex-end; }
+
+        .step-card {
+            width: 44%;
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-dim);
+            border-radius: 14px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+        }
+
+        .step-card:hover { border-color: rgba(255,255,255,0.3); }
+
+        .step-dot {
+            position: absolute;
+            left: 50%; top: 20px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 2px solid #000;
+            z-index: 2;
+        }
+
+        /* ACTIVE STATE */
+        .step-card.active {
+            border-color: var(--step-color);
+            box-shadow: 0 0 20px rgba(var(--step-color-rgb), 0.2);
+            transform: scale(1.02);
+        }
+
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.3s ease;
+            font-size: 11px;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .step-card.active .details {
+            max-height: 500px;
+            margin-top: 12px;
+            padding-top: 12px;
+        }
+
+        /* CHIPS */
+        .detail-chip {
+            display: flex; gap: 10px; padding: 8px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px; margin-bottom: 6px;
+            align-items: center;
+        }
+
+        /* LEGEND */
+        .legend {
+            max-width: 700px; margin: 40px auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+        }
+        .legend-box { padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .legend-box h3 { margin: 0 0 8px 0; font-size: 13px; }
+        .legend-box p { margin: 0; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+
+        @media (max-width: 600px) {
+            .step-card { width: 85%; }
+            .timeline-line { left: 10px; transform: none; }
+            .step-dot { left: 10px; }
+            .step-container.left, .step-container.right { justify-content: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">SPEC AI</div>
+        <div class="subtitle">Interaktywna Mapa Drogi</div>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-line"></div>
+        <div id="steps-root"></div>
+    </div>
+
+    <div class="legend">
+        <div class="legend-box" style="background: #ef444411; border-color: #ef444444;">
+            <h3 style="color: #ef4444;">🔴 DIAGNOZA</h3>
+            <p>Nie wiesz co jest zepsute. AI zadaje pytania i szuka przyczyny.</p>
+        </div>
+        <div class="legend-box" style="background: #3b82f611; border-color: #3b82f644;">
+            <h3 style="color: #3b82f6;">🔵 NAPRAWA</h3>
+            <p>Wiesz co naprawić. AI prowadzi Cię krok po kroku za rękę.</p>
+        </div>
+    </div>
+
+    <script>
+        const STEPS = [
+            { id: "wejscie", icon: "👤", title: "Wchodzisz na Spec AI", color: "#ef4444", rgb: "239, 68, 68", side: "left", desc: "Otwierasz aplikację na telefonie lub komputerze. Widzisz dwa wielkie przyciski.", details: ["📱 Działa na każdym telefonie", "🌐 Zero instalacji", "🔴 Faza BETA"] },
+            { id: "regulamin", icon: "📄", title: "Akceptujesz regulamin", color: "#f59e0b", rgb: "245, 158, 11", side: "right", desc: "Zasady gry: diagnoza jest poglądowa, AI może się mylić.", details: ["✅ Przycisk aktywny po przewinięciu", "📋 7 najważniejszych punktów"] },
+            { id: "wybor", icon: "🔀", title: "Wybierasz co chcesz zrobić", color: "#8b5cf6", rgb: "139, 92, 246", side: "left", desc: "Zlokalizuj usterkę lub wybierz gotową instrukcję naprawy.", details: ["🔴 DIAGNOZA - szukasz błędu", "🔵 NAPRAWA - masz części, działasz"] },
+            { id: "formularz", icon: "📝", title: "Wypełniasz formularz", color: "#3b82f6", rgb: "59, 130, 246", side: "right", desc: "Dane auta + opis usterki. Im więcej dasz, tym więcej dostaniesz.", details: ["🚗 VAG do 2016r", "📸 2 zdjęcia gratis"] },
+            { id: "sesja", icon: "🤖", title: "AI prowadzi sesję", color: "#10b981", rgb: "16, 185, 129", side: "left", desc: "Inteligentny wywiad. AI analizuje Twoje odpowiedzi na bieżąco.", details: ["❓ Max 7 pytań", "📊 Pasek postępu"] },
+            { id: "raport", icon: "📋", title: "Dostajesz raport", color: "#f59e0b", rgb: "245, 158, 11", side: "right", desc: "Wynik końcowy: co kupić, co sprawdzić, co powiedzieć mechanikowi.", details: ["📥 Kopiuj do schowka", "⚠️ Disclaimer prawny"] },
+            { id: "przyszlosc", icon: "🔒", title: "Co planujemy", color: "#374151", rgb: "55, 65, 81", side: "left", desc: "Trwa rozwój. Wkrótce PDF, konta użytkowników i integracja z OBD2.", details: ["🔌 Diagnostyka OBD2", "💳 Premium 9,99 zł"] }
+        ];
+
+        const root = document.getElementById('steps-root');
+
+        STEPS.forEach((step, i) => {
+            const container = document.createElement('div');
+            container.className = `step-container ${step.side}`;
+            
+            container.innerHTML = `
+                <div class="step-dot" style="background: ${step.color}"></div>
+                <div class="step-card" onclick="toggleStep(this)" style="--step-color: ${step.color}; --step-color-rgb: ${step.rgb}">
+                    <div style="font-size: 10px; color: ${step.color}; font-weight: 700; letter-spacing: 2px;">KROK ${i+1}</div>
+                    <div style="font-weight: 700; margin: 4px 0;">${step.icon} ${step.title}</div>
+                    <div class="details">
+                        <p>${step.desc}</p>
+                        ${step.details.map(d => `<div class="detail-chip">${d}</div>`).join('')}
+                    </div>
+                </div>
+            `;
+            root.appendChild(container);
+        });
+
+        function toggleStep(card) {
+            const isActive = card.classList.contains('active');
+            document.querySelectorAll('.step-card').forEach(c => c.classList.remove('active'));
+            if (!isActive) card.classList.add('active');
+        }
+    </script>
+</body>
+</html>
